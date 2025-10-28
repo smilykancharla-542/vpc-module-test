@@ -1,11 +1,17 @@
 module "vpc"{
     source="../terraform-aws-vpc"
-    vpc_cidr = "10.0.0.0/16"
-    project_name ="roboshop"
-    environment = "dev"
+    ##vpc
+    vpc_cidr = var.vpc_cidr
+    project_name =var.project_name
+    environment = var.environment
+
+    #public subnet(frontend)
+    public_cidr_blocks = var.public_cidr_blocks
+    #private subnet(backend)
+    private_cidrs = var.private_cidrs
+    #dabase (databse)
+    database_cidrs =var.database_cidrs
+
+
 }
 
-output "vpc_id" {
-    value = module.vpc.vpc_id
-  
-}
